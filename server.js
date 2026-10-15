@@ -12,7 +12,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-const DATA_DIR = path.join(__dirname, 'data');
+const DATA_DIR = process.env.DATA_DIR
+  ? path.resolve(process.env.DATA_DIR)
+  : process.env.VERCEL
+    ? path.join(os.tmpdir(), 'travel-booking-app')
+    : path.join(__dirname, 'data');
 const DB_FILE = path.join(DATA_DIR, 'db.json');
 
 // Ensure data directory and db file exist
@@ -289,7 +293,7 @@ function getLocalIp() {
   for (const name of Object.keys(interfaces)) {
     // Skip virtual adapters
     if (/virtual|vbox|vmware|vethernet|loopback|docker/i.test(name)) continue;
-    for (const iface of interfaces[name]) {
+    for (const iface of interfaces[name] || []) {
       if (iface.family === 'IPv4' && !iface.internal) {
         if (!iface.address.startsWith('192.168.56.')) {
           candidates.push(iface.address);
@@ -321,12 +325,16 @@ app.use((req, res) => {
   res.sendFile('index.html', { root: path.join(__dirname, 'public') });
 });
 
-app.listen(PORT, '0.0.0.0', () => {
-  const localIp = getLocalIp();
-  console.log(`=======================================================`);
-  console.log(`🚀 Travel Booking System is running!`);
-  console.log(`💻 Laptop / Desktop URL : http://localhost:${PORT}`);
-  console.log(`📱 Mobile (Same Wi-Fi)  : http://${localIp}:${PORT}`);
-  console.log(`🔐 Admin Panel URL      : http://localhost:${PORT}/admin`);
-  console.log(`=======================================================`);
-});
+if (require.main === module && !process.env.VERCEL) {
+  app.listen(PORT, '0.0.0.0', () => {
+    const localIp = getLocalIp();
+    console.log(`=======================================================`);
+    console.log(`🚀 Travel Booking System is running!`);
+    console.log(`💻 Laptop / Desktop URL : http://localhost:${PORT}`);
+    console.log(`📱 Mobile (Same Wi-Fi)  : http://${localIp}:${PORT}`);
+    console.log(`🔐 Admin Panel URL      : http://localhost:${PORT}/admin`);
+    console.log(`=======================================================`);
+  });
+}
+
+module.exports = app;

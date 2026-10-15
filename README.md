@@ -38,6 +38,12 @@ A modern, responsive, full-stack travel & cab booking web application designed t
   - બ્રાઉઝરમાં ખોલો: [http://192.168.1.7:3000](http://192.168.1.7:3000)
   - એડમિન પેનલ: [http://192.168.1.7:3000/admin](http://192.168.1.7:3000/admin)
 
+## Deployment
+
+For Node.js hosts, install dependencies with `npm install` and start the app with `npm start`. The server listens on the `PORT` environment variable provided by the host.
+
+Vercel serves the pages from `public/` and runs the Express app as a function. Its JSON database is placed in `/tmp` because the deployed project directory is read-only. Vercel temporary storage is not persistent, so use a hosted database if bookings must survive function restarts.
+
 ---
 
 ## 🛠️ પ્રોજેક્ટ સ્ટ્રક્ચર (Project Structure)
