@@ -1,0 +1,57 @@
+/* Custom Styles & Animation */
+@keyframes scaleUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Vehicle card active styles */
+.car-card.selected {
+  border-color: #f59e0b !important;
+  background-color: #fffbeb !important;
+  box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.18);
+}
+.car-card.selected i {
+  color: #d97706 !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Pulsing beacon */
+.pulse-beacon {
+  animation: beacon 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes beacon {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.15);
+  }
+}

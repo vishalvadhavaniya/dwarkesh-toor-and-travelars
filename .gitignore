@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Environment variables and local application data
+.env
+.env.*
+!.env.example
+data/db.json
+
+# Logs and test/build output
+*.log
+npm-debug.log*
+yarn-debug.log*
+coverage/
+dist/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini

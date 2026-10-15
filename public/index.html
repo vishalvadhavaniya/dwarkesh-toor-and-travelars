@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Dwarkesh Tour & Travels | દ્વારકેશ ટૂર એન્ડ ટ્રાવેલ્સ</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Gujarati:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'Noto Sans Gujarati', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+              900: '#78350f',
+            },
+            primary: {
+              DEFAULT: '#0f172a',
+              light: '#1e293b'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col selection:bg-amber-400 selection:text-slate-950">
+
+  <!-- TOP HEADER -->
+  <header class="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md text-white border-b border-slate-800 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-yellow-400 flex items-center justify-center text-slate-950 shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-car-side text-lg"></i>
+        </div>
+        <div>
+          <span id="headerBusinessName" class="font-extrabold text-lg tracking-tight block text-white leading-none">Dwarkesh Tour & Travels</span>
+          <span class="text-[11px] text-amber-400 font-semibold tracking-wider uppercase" data-i18n="tagline">દ્વારકેશ ટૂર એન્ડ ટ્રાવેલ્સ</span>
+        </div>
+      </a>
+
+      <!-- Right Controls: Language Selector & Admin Link -->
+      <div class="flex items-center gap-2 sm:gap-4">
+        <!-- Language Switcher -->
+        <div class="inline-flex bg-slate-800 p-1 rounded-xl border border-slate-700">
+          <button type="button" onclick="setLanguage('gu')" class="lang-btn px-2.5 py-1 text-xs font-semibold rounded-lg transition active" data-lang="gu">ગુજ</button>
+          <button type="button" onclick="setLanguage('hi')" class="lang-btn px-2.5 py-1 text-xs font-semibold rounded-lg transition text-slate-400 hover:text-white" data-lang="hi">हिंदी</button>
+          <button type="button" onclick="setLanguage('en')" class="lang-btn px-2.5 py-1 text-xs font-semibold rounded-lg transition text-slate-400 hover:text-white" data-lang="en">EN</button>
+        </div>
+
+        <!-- Admin Portal Icon Button -->
+        <a href="/admin" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-amber-400 text-xs font-medium border border-slate-700 transition" title="Admin Portal">
+          <i class="fa-solid fa-user-shield"></i>
+          <span class="hidden md:inline">Admin</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white pt-8 pb-20 px-4 overflow-hidden">
+    <!-- Subtle Background Glow -->
+    <div class="absolute inset-0 opacity-20 pointer-events-none">
+      <div class="absolute -top-40 -right-40 w-96 h-96 bg-amber-500 rounded-full blur-3xl"></div>
+      <div class="absolute top-20 -left-40 w-96 h-96 bg-blue-600 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-4">
+        <i class="fa-solid fa-bolt"></i>
+        <span data-i18n="badgeText">ઇન્સ્ટન્ટ બુકિંગ • ૨૪x૭ ઉપલબ્ધ</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-3 leading-tight" data-i18n="heroTitle">
+        તમારા સફરની <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-300">ઓનલાઇન ટેક્સી</span> બુક કરો
+      </h1>
+      <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto" data-i18n="heroSubtitle">
+        ક્યાંથી ક્યાં જવું છે, તારીખ અને સમય પસંદ કરો. ગણતરીની મિનિટોમાં કન્ફર્મેશન મેળવો.
+      </p>
+    </div>
+  </section>
+
+  <!-- MAIN BOOKING CONTAINER -->
+  <main class="flex-1 max-w-3xl w-full mx-auto px-4 -mt-12 mb-16 relative z-20">
+    <div class="bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden">
+      
+      <!-- Trip Type Switcher (One Way / Round Trip) -->
+      <div class="bg-slate-100 p-2 flex gap-1 border-b border-slate-200">
+        <button type="button" id="btnOneWay" onclick="selectTripType('oneway')" class="flex-1 py-3 px-4 rounded-2xl font-bold text-sm flex items-center justify-center gap-2 transition-all bg-white text-slate-900 shadow-sm">
+          <i class="fa-solid fa-arrow-right text-amber-500"></i>
+          <span data-i18n="oneWay">વન વે (One Way)</span>
+        </button>
+        <button type="button" id="btnRoundTrip" onclick="selectTripType('roundtrip')" class="flex-1 py-3 px-4 rounded-2xl font-semibold text-sm flex items-center justify-center gap-2 transition-all text-slate-600 hover:text-slate-900">
+          <i class="fa-solid fa-arrows-rotate text-slate-400"></i>
+          <span data-i18n="roundTrip">રાઉન્ડ ટ્રીપ (Round Trip)</span>
+        </button>
+      </div>
+
+      <!-- BOOKING FORM -->
+      <form id="bookingForm" onsubmit="handleFormSubmit(event)" class="p-5 sm:p-8 space-y-6">
+        
+        <!-- ROW 1: PICKUP & DROP LOCATIONS -->
+        <div class="space-y-4">
+          <div class="relative">
+            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
+              <span data-i18n="lblPickup">ક્યાંથી ઉપડવું છે? (Pickup Location)</span>
+              <span class="text-red-500">*</span>
+            </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                <i class="fa-solid fa-location-dot text-emerald-600"></i>
+              </div>
+              <input type="text" id="pickupInput" required placeholder="દા.ત. અમદાવાદ એરપોર્ટ, પાલડી, ઇસ્કોન..."
+                class="w-full pl-10 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition"
+                autocomplete="off">
+            </div>
+            <!-- Quick Chips for Pickup -->
+            <div class="flex flex-wrap gap-1.5 mt-2">
+              <span class="text-[11px] text-slate-400 py-0.5 font-medium" data-i18n="quickSelect">ઝડપી પસંદગી:</span>
+              <button type="button" onclick="setPickup('Ahmedabad Airport')" class="text-xs px-2.5 py-0.5 rounded-lg bg-slate-100 hover:bg-amber-100 text-slate-700 transition">Ahmedabad Airport</button>
+              <button type="button" onclick="setPickup('Surat')" class="text-xs px-2.5 py-0.5 rounded-lg bg-slate-100 hover:bg-amber-100 text-slate-700 transition">Surat</button>
+              <button type="button" onclick="setPickup('Vadodara')" class="text-xs px-2.5 py-0.5 rounded-lg bg-slate-100 hover:bg-amber-100 text-slate-700 transition">Vadodara</button>
+              <button type="button" onclick="setPickup('Rajkot')" class="text-xs px-2.5 py-0.5 rounded-lg bg-slate-100 hover:bg-amber-100 text-slate-700 transition">Rajkot</button>
+            </div>
+          </div>
+
+          <!-- Swap Button in the middle -->
+          <div class="flex justify-center -my-2 relative z-10">
+            <button type="button" onclick="swapLocations()" class="w-9 h-9 rounded-full bg-slate-100 border border-slate-200 text-slate-600 hover:bg-amber-500 hover:text-white hover:border-amber-500 flex items-center justify-center transition shadow-sm" title="Swap Locations">
+              <i class="fa-solid fa-arrow-down-up-across-line text-xs"></i>
+            </button>
+          </div>
+
+          <div class="relative">
+            <label class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-500 inline-block"></span>
+              <span data-i18n="lblDrop">ક્યાં જવું છે? (Drop Location)</span>
+              <span class="text-red-500">*</span>
+            </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                <i class="fa-solid fa-location-crosshairs text-red-500"></i>
+              </div>
+              <input type="text" id="dropInput" required placeholder="દા.ત. સુરત, સ્ટેચ્યુ ઓફ યુનિટી, મુંબઈ..."
+                class="w-full pl-10 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition"
+                autocomplete="off">
+            </div>
+            <!-- Quick Chips for Drop -->
+            <div class="flex flex-wrap gap-1.5 mt-2">
+              <span class="text-[11px] text-slate-400 py-0.5 font-medium" data-i18n="quickSelect">ઝડપી પસંદગી:</span>
+              <button type="button" onclick="setDrop('Surat')" class="text-xs px-2.5 py-0.5 rounded-lg bg-slate-100 hover:bg-amber-100 text-slate-700 transition">Surat</button>
+              <button type="button" onclick="setDrop('Statue of Unity')" class="text-xs px-2.5 py-0.5 rounded-lg bg-slate-100 hover:bg-amber-100 text-slate-700 transition">Statue of Unity</button>
+              <button type="button" onclick="setDrop('Mumbai Airport')" class="text-xs px-2.5 py-0.5 rounded-lg bg-slate-100 hover:bg-amber-100 text-slate-700 transition">Mumbai</button>
+              <button type="button" onclick="setDrop('Somnath')" class="text-xs px-2.5 py-0.5 rounded-lg bg-slate-100 hover:bg-amber-100 text-slate-700 transition">Somnath</button>
+            </div>
+          </div>
+        </div>
+
+        <hr class="border-slate-100">
+
+        <!-- ROW 2: DATE & TIME -->
+        <div>
+          <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-calendar-days text-amber-500"></i>
+            <span data-i18n="lblDateTimeHeader">સફરની તારીખ અને સમય</span>
+          </h3>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="lblPickupDate">ઉપડવાની તારીખ (Date) *</label>
+              <input type="date" id="pickupDate" required
+                class="w-full px-3.5 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="lblPickupTime">સમય (Time) *</label>
+              <input type="time" id="pickupTime" required
+                class="w-full px-3.5 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition">
+            </div>
+          </div>
+
+          <!-- Return Date/Time (Shown only for Round Trip) -->
+          <div id="roundTripFields" class="hidden mt-3 p-4 bg-amber-50/60 border border-amber-200 rounded-2xl">
+            <div class="text-xs font-bold text-amber-800 mb-2 flex items-center gap-1.5">
+              <i class="fa-solid fa-arrows-rotate"></i>
+              <span data-i18n="lblReturnHeader">પરત ફરવાની તારીખ અને સમય</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1" data-i18n="lblReturnDate">પરત આવવાની તારીખ</label>
+                <input type="date" id="returnDate"
+                  class="w-full px-3.5 py-2.5 bg-white border border-amber-300 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1" data-i18n="lblReturnTime">પરત આવવાનો સમય</label>
+                <input type="time" id="returnTime"
+                  class="w-full px-3.5 py-2.5 bg-white border border-amber-300 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="border-slate-100">
+
+        <!-- ROW 3: SELECT VEHICLE -->
+        <div>
+          <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-taxi text-amber-500"></i>
+            <span data-i18n="lblSelectCar">ગાડી પસંદ કરો (Select Vehicle)</span>
+          </h3>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+            <!-- Sedan -->
+            <label class="car-card cursor-pointer border-2 border-amber-500 bg-amber-50/40 rounded-2xl p-3 flex flex-col items-center text-center transition hover:shadow-md relative">
+              <input type="radio" name="vehicle" value="Sedan (Dzire / Etios)" checked class="sr-only">
+              <i class="fa-solid fa-car text-2xl text-amber-600 mb-1.5"></i>
+              <span class="font-bold text-xs text-slate-900">Sedan</span>
+              <span class="text-[11px] text-slate-500">Dzire / Etios</span>
+              <span class="mt-1 px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[10px] font-semibold">4 Seater</span>
+            </label>
+
+            <!-- SUV -->
+            <label class="car-card cursor-pointer border border-slate-200 bg-white rounded-2xl p-3 flex flex-col items-center text-center transition hover:shadow-md relative">
+              <input type="radio" name="vehicle" value="SUV (Ertiga / Carens)" class="sr-only">
+              <i class="fa-solid fa-van-shuttle text-2xl text-slate-700 mb-1.5"></i>
+              <span class="font-bold text-xs text-slate-900">SUV</span>
+              <span class="text-[11px] text-slate-500">Ertiga / Carens</span>
+              <span class="mt-1 px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 text-[10px] font-semibold">6 Seater</span>
+            </label>
+
+            <!-- Innova Crysta -->
+            <label class="car-card cursor-pointer border border-slate-200 bg-white rounded-2xl p-3 flex flex-col items-center text-center transition hover:shadow-md relative">
+              <input type="radio" name="vehicle" value="Innova Crysta Premium" class="sr-only">
+              <i class="fa-solid fa-shield-halved text-2xl text-slate-700 mb-1.5"></i>
+              <span class="font-bold text-xs text-slate-900">Innova Crysta</span>
+              <span class="text-[11px] text-slate-500">Luxury Comfort</span>
+              <span class="mt-1 px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 text-[10px] font-semibold">7 Seater</span>
+            </label>
+
+            <!-- Hatchback -->
+            <label class="car-card cursor-pointer border border-slate-200 bg-white rounded-2xl p-3 flex flex-col items-center text-center transition hover:shadow-md relative">
+              <input type="radio" name="vehicle" value="Hatchback (Swift / WagonR)" class="sr-only">
+              <i class="fa-solid fa-car-rear text-2xl text-slate-700 mb-1.5"></i>
+              <span class="font-bold text-xs text-slate-900">Hatchback</span>
+              <span class="text-[11px] text-slate-500">Swift / WagonR</span>
+              <span class="mt-1 px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 text-[10px] font-semibold">4 Seater</span>
+            </label>
+          </div>
+        </div>
+
+        <hr class="border-slate-100">
+
+        <!-- ROW 4: PASSENGER & CONTACT DETAILS -->
+        <div>
+          <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-user-check text-amber-500"></i>
+            <span data-i18n="lblContactDetails">મુસાફરની વિગત (Contact Details)</span>
+          </h3>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">
+                <span data-i18n="lblName">તમારું પૂરું નામ (Full Name)</span> *
+              </label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                  <i class="fa-regular fa-user text-xs"></i>
+                </div>
+                <input type="text" id="custName" required placeholder="દા.ત. વિશાલ પટેલ"
+                  class="w-full pl-9 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">
+                <span data-i18n="lblPhone">મોબાઇલ / WhatsApp નંબર</span> *
+              </label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                  <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i>
+                </div>
+                <input type="tel" id="custPhone" required placeholder="10 ડિજિટ નંબર (દા.ત. 9876543210)"
+                  pattern="[0-9]{10}" maxlength="10"
+                  class="w-full pl-9 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1" data-i18n="lblPassengers">કુલ મુસાફરો (Passengers)</label>
+              <select id="passengerCount" class="w-full px-3.5 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition">
+                <option value="1">1 Person</option>
+                <option value="2">2 Persons</option>
+                <option value="3">3 Persons</option>
+                <option value="4" selected>4 Persons</option>
+                <option value="5">5 Persons</option>
+                <option value="6">6 Persons</option>
+                <option value="7">7+ Persons</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1" data-i18n="lblNotes">ખાસ નોંધ / સામાનની વિગત (વૈકલ્પિક)</label>
+              <input type="text" id="custNotes" placeholder="દા.ત. ૨ મોટા બેગ છે / AC ચાલુ રાખવું..."
+                class="w-full px-3.5 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition">
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBMIT BUTTON -->
+        <div class="pt-2">
+          <button type="submit" id="btnSubmitBooking"
+            class="w-full py-4 px-6 bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-600 hover:to-yellow-500 text-slate-950 font-extrabold text-base rounded-2xl shadow-lg shadow-amber-500/25 active:scale-[0.99] transition-all flex items-center justify-center gap-2">
+            <i class="fa-solid fa-taxi text-lg"></i>
+            <span id="btnSubmitText" data-i18n="btnSubmit">હમણાં બુક કરો (Book Now)</span>
+          </button>
+          <p class="text-center text-[11px] text-slate-500 mt-2 flex items-center justify-center gap-1.5">
+            <i class="fa-solid fa-lock text-emerald-600"></i>
+            <span data-i18n="privacyNotice">તમારી વિગત સુરક્ષિત છે અને તરત એડમિન પાસે પહોંચી જશે.</span>
+          </p>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- FEATURES BENEFIT STRIP -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8">
+      <div class="bg-white p-3.5 rounded-2xl border border-slate-100 text-center shadow-sm">
+        <i class="fa-solid fa-circle-check text-emerald-500 text-xl mb-1"></i>
+        <h4 class="font-bold text-xs text-slate-800" data-i18n="feat1">ઝડપી કન્ફર્મેશન</h4>
+        <p class="text-[11px] text-slate-400">ઇન્સ્ટન્ટ રિસ્પોન્સ</p>
+      </div>
+      <div class="bg-white p-3.5 rounded-2xl border border-slate-100 text-center shadow-sm">
+        <i class="fa-solid fa-shield-cat text-amber-500 text-xl mb-1"></i>
+        <h4 class="font-bold text-xs text-slate-800" data-i18n="feat2">અનુભવી ડ્રાઈવર</h4>
+        <p class="text-[11px] text-slate-400">સલામત મુસાફરી</p>
+      </div>
+      <div class="bg-white p-3.5 rounded-2xl border border-slate-100 text-center shadow-sm">
+        <i class="fa-solid fa-hand-holding-dollar text-blue-500 text-xl mb-1"></i>
+        <h4 class="font-bold text-xs text-slate-800" data-i18n="feat3">વાજબી ભાવ</h4>
+        <p class="text-[11px] text-slate-400">કોઈ છુપો ચાર્જ નહીં</p>
+      </div>
+      <div class="bg-white p-3.5 rounded-2xl border border-slate-100 text-center shadow-sm">
+        <i class="fa-solid fa-headset text-purple-500 text-xl mb-1"></i>
+        <h4 class="font-bold text-xs text-slate-800" data-i18n="feat4">૨૪/૭ સપોર્ટ</h4>
+        <p class="text-[11px] text-slate-400">હંમેશા હાજર</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- SUCCESS POPUP / MODAL (Triggered after submitting data) -->
+  <div id="successModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl border border-slate-100 animate-scale-up text-center">
+      
+      <!-- Celebration Icon -->
+      <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-inner">
+        <i class="fa-solid fa-check"></i>
+      </div>
+
+      <h3 class="text-xl font-extrabold text-slate-900 mb-1" data-i18n="successTitle">બુકિંગ સફળતાપૂર્વક મોકલાઈ ગયું!</h3>
+      <p class="text-xs text-slate-500 mb-4" data-i18n="successSubtitle">તમારો ડેટા એડમિન પાસે સેવ થઈ ગયો છે.</p>
+
+      <!-- Booking Card Details -->
+      <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 text-left space-y-2 mb-5 text-xs">
+        <div class="flex justify-between items-center pb-2 border-b border-slate-200">
+          <span class="text-slate-500 font-medium">Booking ID:</span>
+          <span id="modalBookingId" class="font-mono font-bold text-slate-900 bg-amber-100 text-amber-800 px-2 py-0.5 rounded">BK-XXXXXX</span>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-emerald-600 font-bold mt-0.5">●</span>
+          <div>
+            <span class="text-slate-400 block text-[10px]">ક્યાંથી (Pickup):</span>
+            <span id="modalPickup" class="font-semibold text-slate-800">--</span>
+          </div>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-red-500 font-bold mt-0.5">●</span>
+          <div>
+            <span class="text-slate-400 block text-[10px]">ક્યાં (Drop):</span>
+            <span id="modalDrop" class="font-semibold text-slate-800">--</span>
+          </div>
+        </div>
+        <div class="flex justify-between pt-1">
+          <div>
+            <span class="text-slate-400 block text-[10px]">તારીખ:</span>
+            <span id="modalDate" class="font-semibold text-slate-800">--</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block text-[10px]">સમય:</span>
+            <span id="modalTime" class="font-semibold text-slate-800">--</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block text-[10px]">ગાડી:</span>
+            <span id="modalVehicle" class="font-semibold text-slate-800">--</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIRECT WHATSAPP ACTION BUTTON FOR CLIENT TO SEND TO ADMIN -->
+      <div class="space-y-2.5">
+        <a id="btnModalWhatsApp" href="#" target="_blank"
+          class="w-full py-3.5 px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30 transition">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span data-i18n="btnSendWhatsapp">WhatsApp પર સીધો મેસેજ મોકલો</span>
+        </a>
+
+        <button type="button" onclick="closeModalAndReset()"
+          class="w-full py-2.5 px-4 rounded-xl text-slate-500 hover:text-slate-800 text-xs font-semibold transition">
+          <span data-i18n="btnClose">બંધ કરો (Close)</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 text-xs py-6 px-4 mt-auto border-t border-slate-800">
+    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+      <div>
+        <span class="font-bold text-white" id="footerBusinessName">Dwarkesh Tour & Travels</span> © 2026. All rights reserved.
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="/admin" class="hover:text-amber-400 flex items-center gap-1">
+          <i class="fa-solid fa-lock text-[10px]"></i>
+          <span>Admin Login</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
